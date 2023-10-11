@@ -28,48 +28,30 @@ logo = """
 print(logo)
 print("Warehouse Arrival and Records, Inventory Evaluation, Sales Data, Sales Reports System")
 
-time.sleep(1)
+time.sleep(1.5)
 
 usuariosPermitidos = ["admin", "EurielGT", "AngeloFB", "SantiagoQM", "SergioF"]
-pinesPermitidos = ["admin", "EGT260106", "AFB291103", "SQM090503", "TC1028"]
+contraseniasPermitidas = ["admin", "EGT260106", "AFB291103", "SQM090503", "TC1028"]
 intentosMaximos = 3
     
 
-def verificacionContrasenia(pinesPermitidos):
+def verificacionContrasenia(usuariosPermitidos, contraseniasPermitidas):
     for intento in range(1, intentosMaximos + 1):
-        pinIngresado = input(f"Intento {intento}: Ingrese el PIN: ")
-
-        if pinIngresado == pinesPermitidos:
+        if usuarioIngresado in usuariosPermitidos and contraseniaIngresada in contraseniasPermitidas:
             print("Login Correcto")
             break 
         else:
-            print("PIN incorrecto")
-
-    else:
-        print("Llamando a la policía")
-
-"""
-def verificar_usuario_contraseña():
-    usuarios = {
-        "usuario1": "contraseña1",
-        "usuario2": "contraseña2",
-        "usuario3": "contraseña3"
-    }
-    usuario = input("Ingrese su nombre de usuario: ")
-    contraseña = input("Ingrese su contraseña: ")
+            print("Llamando a la policía")
     
-    for user, password in usuarios.items():
-        if usuario == user and contraseña == password:
-            print("Acceso concedido.")
-            break
-    else:
-        print("Usuario o contraseña incorrectos.")
+    return intento
 
-verificar_usuario_contraseña()
-"""
+usuarioIngresado = input(f"Ingrese su Usuario: ")
+contraseniaIngresada = input(f"Ingrese su Contraseña: ")
+verificacionContrasenia(usuarioIngresado, contraseniasPermitidas)
 
-
-
+#A esta función aún le falta la opción de volver a intentar en caso de tener mal una entrada de usuario y contraseña. Además, no funciona el contador de intentos. 
+#Quizá integrar una función donde se puedan añadir usuarios y sus contraseñas con manipulación de archivos. 
+#Cuando falla, aún muestra el MENU, revisar eso. 
 
 print("---- MENU ---- \n")
 
@@ -78,4 +60,3 @@ print("[2] = Suma de N números consecutivos.")
 print("[3] = Lista de precios.")
 print("[4] = Promedio Sencillo.")
 print("[5] = Promedio con Desición.")
-1
