@@ -10,8 +10,8 @@
 #
 # --- EQUIPO 5 ---
 # Santiago Quintana Moreno A01571222                                                                                      
-# Euriel Gomez Tamez A00838859
-# Angelo Franco Baez A00840411                                                                                          
+# Euriel Gomez Tamez       A00838859
+# Angelo Franco Baez       A00840411                                                                                          
 
 import time
 
