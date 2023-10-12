@@ -30,8 +30,8 @@ print("Warehouse Arrival and Records, Inventory Evaluation, Sales Data, Sales Re
 
 time.sleep(1.5)
 
-usuariosPermitidos = ["admin", "EurielGT", "AngeloFB", "SantiagoQM", "SergioF"]
-contraseniasPermitidas = ["admin", "EGT260106", "AFB291103", "SQM090503", "TC1028"]
+
+bloqueoSegundos = 5
 intentosMaximos = 3
     
 
@@ -39,15 +39,25 @@ def verificacionContrasenia(usuariosPermitidos, contraseniasPermitidas):
     for intento in range(1, intentosMaximos + 1):
         if usuarioIngresado in usuariosPermitidos and contraseniaIngresada in contraseniasPermitidas:
             print("Login Correcto")
-            break 
+            return intento
         else:
-            print("Llamando a la policía")
+            print(f"Usuario o contraseña equivocado. Intente de nuevo. Intentos restantes: {intentosMaximos - intento}.")
     
-    return intento
+    print("Bloqueando el sistema.")
+    time.sleep(bloqueoSegundos)
+    return intentosMaximos
+
+usuariosPermitidos = ["admin", "EurielGT", "AngeloFB", "SantiagoQM", "SergioF"]
+contraseniasPermitidas = ["admin", "EGT260106", "AFB291103", "SQM090503", "TC1028"]
+
 
 usuarioIngresado = input(f"Ingrese su Usuario: ")
 contraseniaIngresada = input(f"Ingrese su Contraseña: ")
-verificacionContrasenia(usuarioIngresado, contraseniasPermitidas)
+intentos = verificacionContrasenia(usuariosPermitidos, contraseniasPermitidas)
+print(f"Número total de intentos {intentos}.")
+
+
+
 
 #A esta función aún le falta la opción de volver a intentar en caso de tener mal una entrada de usuario y contraseña. Además, no funciona el contador de intentos. 
 #Quizá integrar una función donde se puedan añadir usuarios y sus contraseñas con manipulación de archivos. 
