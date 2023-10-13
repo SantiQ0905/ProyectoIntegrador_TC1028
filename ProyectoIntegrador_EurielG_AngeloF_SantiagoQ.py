@@ -28,33 +28,41 @@ logo = """
 print(logo)
 print("Warehouse Arrival and Records, Inventory Evaluation, Sales Data, Sales Reports System")
 
-time.sleep(1.5)
 
 
-bloqueoSegundos = 5
-intentosMaximos = 3
-    
+def verificacionContrasenia():
+    usuariosPermitidos = ["admin", "EurielGT", "AngeloFB", "SantiagoQM", "SergioF"]
+    contraseniasPermitidas = ["admin", "EGT260106", "AFB291103", "SQM090503", "TC1028"]
 
-def verificacionContrasenia(usuariosPermitidos, contraseniasPermitidas):
+    bloqueoSegundos = 5
+    intentosMaximos = 3
     for intento in range(1, intentosMaximos + 1):
+        usuarioIngresado = input(f"Ingrese su Usuario: ")
+        contraseniaIngresada = input(f"Ingrese su Contraseña: ")
         if usuarioIngresado in usuariosPermitidos and contraseniaIngresada in contraseniasPermitidas:
             print("Login Correcto")
             return intento
         else:
             print(f"Usuario o contraseña equivocado. Intente de nuevo. Intentos restantes: {intentosMaximos - intento}.")
-    
+
     print("Bloqueando el sistema.")
     time.sleep(bloqueoSegundos)
     return intentosMaximos
+    
+def menu():
+    print("---- MENU ---- \n")
+    print("[1] = Cuenta números.")
+    print("[2] = Suma de N números consecutivos.")
+    print("[3] = Lista de precios.")
+    print("[4] = Promedio Sencillo.")
+    print("[5] = Promedio con Desición.")
 
-usuariosPermitidos = ["admin", "EurielGT", "AngeloFB", "SantiagoQM", "SergioF"]
-contraseniasPermitidas = ["admin", "EGT260106", "AFB291103", "SQM090503", "TC1028"]
 
+    
+def main():
+    intentos = verificacionContrasenia()
+    print(f"Número total de intentos {intentos}.")
 
-usuarioIngresado = input(f"Ingrese su Usuario: ")
-contraseniaIngresada = input(f"Ingrese su Contraseña: ")
-intentos = verificacionContrasenia(usuariosPermitidos, contraseniasPermitidas)
-print(f"Número total de intentos {intentos}.")
 
 
 
@@ -62,11 +70,3 @@ print(f"Número total de intentos {intentos}.")
 #A esta función aún le falta la opción de volver a intentar en caso de tener mal una entrada de usuario y contraseña. Además, no funciona el contador de intentos. 
 #Quizá integrar una función donde se puedan añadir usuarios y sus contraseñas con manipulación de archivos. 
 #Cuando falla, aún muestra el MENU, revisar eso. 
-
-print("---- MENU ---- \n")
-
-print("[1] = Cuenta números.")
-print("[2] = Suma de N números consecutivos.")
-print("[3] = Lista de precios.")
-print("[4] = Promedio Sencillo.")
-print("[5] = Promedio con Desición.")
