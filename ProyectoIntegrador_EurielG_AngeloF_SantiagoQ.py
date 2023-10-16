@@ -50,18 +50,68 @@ def verificacionContrasenia():
     return intentosMaximos
     
 def menu():
-    print("---- MENU ---- \n")
-    print("[1] = Cuenta números.")
-    print("[2] = Suma de N números consecutivos.")
-    print("[3] = Lista de precios.")
-    print("[4] = Promedio Sencillo.")
-    print("[5] = Promedio con Desición.")
+    codigo = input("Ingrese su código: ")
+
+    codigosDeAdmin = ["admin", "TC1028"]
+
+    if codigo in codigosDeAdmin:
+        print("--- MENU DE ADMIN ---")
+        print("[ 1 ] Registrar ventas")
+        print("[ 2 ] Registrar llegada de artículos al almacén")
+        print("[ 3 ] Consultar datos del inventario")
+        print("[ 4 ] Consultar datos de las ventas")
+        print("[ 5 ] Mostrar reportes de ventas por vendedor o por artículo")
+
+        opcionAEjecutar = int(input("Ingrese su selección:"))
+
+        return opcionAEjecutar
+
+    else:
+        print("--- MENU DE EMPLEADO ---")
+        print("[ 1 ] Registrar ventas")
+        print("[ 2 ] Registrar llegada de artículos al almacén")
+        print("[ 3 ] Consultar datos del inventario")
+
+        opcionAEjecutar = int(input("Ingrese su selección:"))
+
+        return opcionAEjecutar
 
 
+def seleccionMenu():
+    opcionAEjecutar = menu()
+
+    if opcionAEjecutar == 1:
+        print("1 ADMIN")
+    elif opcionAEjecutar == 2:
+        print("2 ADMIN")
+    elif opcionAEjecutar == 3:
+        print("3 ADMIN")
+    elif opcionAEjecutar == 4:
+        print("4 ADMIN")
+    elif opcionAEjecutar == 5:
+        print("5 ADMIN")
+    else:
+        print("Error admin")
+
+    opcionAEjecutar = menu()
+
+    if opcionAEjecutar == 1:
+        print("1 EMPLEADO")
+    elif opcionAEjecutar == 2:
+        print("2 EMPLEADO")
+    elif opcionAEjecutar == 3:
+        print("3 EMPLEADO")
+    else:
+        print("Error empleado")
     
-def main():
-    intentos = verificacionContrasenia()
-    print(f"Número total de intentos {intentos}.")
+if __name__ == '__main__':
+    verificacionContrasenia()
+    seleccionMenu()
+
+
+
+
+
 
 
 
