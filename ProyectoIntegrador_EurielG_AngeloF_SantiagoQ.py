@@ -29,7 +29,7 @@ print(logo)
 print("Warehouse Arrival and Records, Inventory Evaluation, Sales Data, Sales Reports System")
 
 
-
+#------------------------------------- LOG IN -------------------------------------------
 def verificacionContrasenia():
     usuariosPermitidos = ["admin", "EurielGT", "AngeloFB", "SantiagoQM", "SergioF"]
     contraseniasPermitidas = ["admin", "EGT260106", "AFB291103", "SQM090503", "TC1028"]
@@ -48,7 +48,14 @@ def verificacionContrasenia():
     print("Bloqueando el sistema.")
     time.sleep(bloqueoSegundos)
     return intentosMaximos
-    
+#------------------------------------- LOG IN -------------------------------------------
+
+#------------------------------------- REGISTRO DE VENTAS -------------------------------------------
+
+
+#------------------------------------- REGISTRO DE VENTAS -------------------------------------------
+
+#------------------------------------- MENU -------------------------------------------
 def menu():
     codigo = input("Ingrese su código: ")
 
@@ -57,66 +64,93 @@ def menu():
     if codigo in codigosDeAdmin:
         print("--- MENU DE ADMIN ---")
         print("[ 1 ] Registrar ventas")
-        print("[ 2 ] Registrar llegada de artículos al almacén")
-        print("[ 3 ] Consultar datos del inventario")
-        print("[ 4 ] Consultar datos de las ventas")
-        print("[ 5 ] Mostrar reportes de ventas por vendedor o por artículo")
+        print("[ 2 ] Administración de Inventario.")
+        print("[ 3 ] Consultar datos de las ventas")
+        print("[ 4 ] Mostrar reportes de ventas por vendedor o por artículo")
 
         opcionAEjecutar = int(input("Ingrese su selección:"))
-
-        return opcionAEjecutar
 
     else:
         print("--- MENU DE EMPLEADO ---")
         print("[ 1 ] Registrar ventas")
-        print("[ 2 ] Registrar llegada de artículos al almacén")
-        print("[ 3 ] Consultar datos del inventario")
+        print("[ 2 ] Administración de Inventario.")
 
         opcionAEjecutar = int(input("Ingrese su selección:"))
 
-        return opcionAEjecutar
+    return opcionAEjecutar
+#------------------------------------- MENU -------------------------------------------
 
+#------------------------ GESTOR DE INVENTARIO -------------------------------
+def agregarArticulo(inventario, contador, articulo, sku, cantidad):
+    inventario.append([contador, articulo, sku, cantidad])
 
+def guardarInventario(nombre_archivo, inventario):
+    with open(nombre_archivo, 'w') as archivo:
+        for item in inventario:
+            archivo.write(f"{item[0]}\t{item[1]}\t{item[2]}\t{item[3]}\n")
+
+def gestorDeInventario():
+    inventario = []  
+    contador = 1
+
+    while True:
+        print("Opciones:")
+        print("1. Agregar artículo al inventario")
+        print("2. Mostrar inventario")
+        print("3. Salir")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            articulo = input("Nombre del artículo: ")
+            sku = input("SKU: ")
+            cantidad = int(input("Cantidad: "))
+            agregarArticulo(inventario, contador, articulo, sku, cantidad)
+            contador += 1
+        elif opcion == "2":
+            print("Inventario:")
+            for item in inventario:
+                print(f"Contador: {item[0]}, Artículo: {item[1]}, SKU: {item[2]}, Cantidad: {item[3]}")
+        elif opcion == "3":
+            guardarInventario("Inventario.txt", inventario)
+            print("Inventario guardado en 'Inventario.txt'. ¡Adiós!")
+            break
+        else:
+            print("Opción no válida. Por favor, elija una opción válida.")
+#------------------------ GESTOR DE INVENTARIO -------------------------------
+
+#------------------------------------- EJECUCIÓN DEL MENU -------------------------------------------
 def seleccionMenu():
     opcionAEjecutar = menu()
 
-    if opcionAEjecutar == 1:
-        print("1 ADMIN")
-    elif opcionAEjecutar == 2:
-        print("2 ADMIN")
-    elif opcionAEjecutar == 3:
-        print("3 ADMIN")
-    elif opcionAEjecutar == 4:
-        print("4 ADMIN")
-    elif opcionAEjecutar == 5:
-        print("5 ADMIN")
-    else:
-        print("Error admin")
+    if "admin" or "TC1028" in codigosDeAdmin:
+        if opcionAEjecutar == 1:
+            print("--- REGISTRO DE VENTAS ---")
+        elif opcionAEjecutar == 2:
+            print("--- GESTOR DE INVENTARIO ---")
+            gestorDeInventario()
 
-    opcionAEjecutar = menu()
+        elif opcionAEjecutar == 3:
+            print("--- DATOS DE VENTAS ---")
+        elif opcionAEjecutar == 4:
+            print("--- REPORTE DE VENTAS POR VENDEDOR O ARTICULO ---")
+        else:
+            print("Error admin")
 
-    if opcionAEjecutar == 1:
-        print("1 EMPLEADO")
-    elif opcionAEjecutar == 2:
-        print("2 EMPLEADO")
-    elif opcionAEjecutar == 3:
-        print("3 EMPLEADO")
     else:
-        print("Error empleado")
-    
+        if opcionAEjecutar == 1:
+            print("--- REGISTRO DE VENTAS ---")
+        elif opcionAEjecutar == 2:
+            print("--- ADMINISTRACIÓN DE INVENTARIO ---")
+        else:
+            print("Error empleado")
+#------------------------------------- EJECUCIÓN DEL MENU -------------------------------------------
+
+
 if __name__ == '__main__':
     verificacionContrasenia()
+    codigosDeAdmin = ["admin", "TC1028"]
     seleccionMenu()
 
 
 
-
-
-
-
-
-
-
-#A esta función aún le falta la opción de volver a intentar en caso de tener mal una entrada de usuario y contraseña. Además, no funciona el contador de intentos. 
-#Quizá integrar una función donde se puedan añadir usuarios y sus contraseñas con manipulación de archivos. 
-#Cuando falla, aún muestra el MENU, revisar eso. 
