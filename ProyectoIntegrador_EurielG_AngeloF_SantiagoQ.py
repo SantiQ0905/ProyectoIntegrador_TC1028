@@ -15,6 +15,7 @@
 
 
 import time
+import sys
 
 logo = """
  _       _____    ____  ___________
@@ -42,12 +43,18 @@ def verificacionContrasenia():
         if usuarioIngresado in usuariosPermitidos and contraseniaIngresada in contraseniasPermitidas:
             print("Login Correcto")
             return intento
-        else:
-            print(f"Usuario o contraseña equivocado. Intente de nuevo. Intentos restantes: {intentosMaximos - intento}.")
+
+        print(f"Usuario o contraseña equivocado. Intente de nuevo. Intentos restantes: {intentosMaximos - intento}.")
 
     print("Bloqueando el sistema.")
     time.sleep(bloqueoSegundos)
-    return intentosMaximos
+    return None
+
+result = verificacionContrasenia()
+if result is not None:
+    print("Sesión exitosa")
+else:
+    print("El programa se ha bloqueado.")
 #--------------------------------------------------------------------------------------- LOG IN -----------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
