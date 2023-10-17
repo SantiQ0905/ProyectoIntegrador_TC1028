@@ -106,11 +106,19 @@ def gestorDeInventario():
 #------------------------------------------------------------------------------------ DATOS DE VENTAS -----------------------------------------------------------------------
 
 #------------------------------------------------------------------------------ REPORTE DE VENTAS POR EMPLEADO --------------------------------------------------------------
+def crearReporte():
+    nombre_vendedor = input("Por favor, ingresa el nombre del vendedor: ")
+    fecha = input("Ingresa la fecha del reporte: ")
+    articulo = input("Ingresa el artículo: ")
 
+    # Crear el archivo Reporte.txt y escribir los valores en él
+    with open("Reporte.txt", "w") as archivo:
+        archivo.write(f"Información del Reporte:\n")
+        archivo.write(f"Nombre del vendedor: {nombre_vendedor}\n")
+        archivo.write(f"Fecha: {fecha}\n")
+        archivo.write(f"Artículo: {articulo}\n")
 
-
-
-
+    print("El archivo Reporte.txt se ha creado exitosamente con la información proporcionada.")
 #------------------------------------------------------------------------------ REPORTE DE VENTAS POR EMPLEADO --------------------------------------------------------------
 
 #------------------------------------------------------------------------------------------ MENU ----------------------------------------------------------------------------
@@ -147,14 +155,20 @@ def seleccionMenu():
     if "admin" or "TC1028" in codigosDeAdmin:
         if opcionAEjecutar == 1:
             print("--- REGISTRO DE VENTAS ---")
+
+
         elif opcionAEjecutar == 2:
             print("--- GESTOR DE INVENTARIO ---")
             gestorDeInventario()
 
         elif opcionAEjecutar == 3:
             print("--- DATOS DE VENTAS ---")
+
+
         elif opcionAEjecutar == 4:
-            print("--- REPORTE DE VENTAS POR VENDEDOR O ARTICULO ---")
+            print("--- REPORTE DE VENTAS POR VENDEDOR ---")
+            crearReporte()
+
         else:
             print("Error admin")
 
