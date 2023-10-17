@@ -29,7 +29,7 @@ print(logo)
 print("Warehouse Arrival and Records, Inventory Evaluation, Sales Data, Sales Reports System")
 
 
-#------------------------------------- LOG IN -------------------------------------------
+#--------------------------------------------------------------------------------------- LOG IN -----------------------------------------------------------------------------
 def verificacionContrasenia():
     usuariosPermitidos = ["admin", "EurielGT", "AngeloFB", "SantiagoQM", "SergioF"]
     contraseniasPermitidas = ["admin", "EGT260106", "AFB291103", "SQM090503", "TC1028"]
@@ -48,39 +48,16 @@ def verificacionContrasenia():
     print("Bloqueando el sistema.")
     time.sleep(bloqueoSegundos)
     return intentosMaximos
-#------------------------------------- LOG IN -------------------------------------------
+#--------------------------------------------------------------------------------------- LOG IN -----------------------------------------------------------------------------
+#---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
 
-#------------------------------------- REGISTRO DE VENTAS -------------------------------------------
 
 
-#------------------------------------- REGISTRO DE VENTAS -------------------------------------------
 
-#------------------------------------- MENU -------------------------------------------
-def menu():
-    codigo = input("Ingrese su código: ")
 
-    codigosDeAdmin = ["admin", "TC1028"]
+#---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
 
-    if codigo in codigosDeAdmin:
-        print("--- MENU DE ADMIN ---")
-        print("[ 1 ] Registrar ventas")
-        print("[ 2 ] Administración de Inventario.")
-        print("[ 3 ] Consultar datos de las ventas")
-        print("[ 4 ] Mostrar reportes de ventas por vendedor o por artículo")
-
-        opcionAEjecutar = int(input("Ingrese su selección:"))
-
-    else:
-        print("--- MENU DE EMPLEADO ---")
-        print("[ 1 ] Registrar ventas")
-        print("[ 2 ] Administración de Inventario.")
-
-        opcionAEjecutar = int(input("Ingrese su selección:"))
-
-    return opcionAEjecutar
-#------------------------------------- MENU -------------------------------------------
-
-#------------------------ GESTOR DE INVENTARIO -------------------------------
+#---------------------------------------------------------------------------------- GESTOR DE INVENTARIO --------------------------------------------------------------------
 def agregarArticulo(inventario, contador, articulo, sku, cantidad):
     inventario.append([contador, articulo, sku, cantidad])
 
@@ -117,9 +94,52 @@ def gestorDeInventario():
             break
         else:
             print("Opción no válida. Por favor, elija una opción válida.")
-#------------------------ GESTOR DE INVENTARIO -------------------------------
+#---------------------------------------------------------------------------------- GESTOR DE INVENTARIO --------------------------------------------------------------------
 
-#------------------------------------- EJECUCIÓN DEL MENU -------------------------------------------
+#------------------------------------------------------------------------------------ DATOS DE VENTAS -----------------------------------------------------------------------
+
+
+
+
+
+#------------------------------------------------------------------------------------ DATOS DE VENTAS -----------------------------------------------------------------------
+
+#------------------------------------------------------------------------------ REPORTE DE VENTAS POR EMPLEADO --------------------------------------------------------------
+
+
+
+
+
+#------------------------------------------------------------------------------ REPORTE DE VENTAS POR EMPLEADO --------------------------------------------------------------
+
+#------------------------------------------------------------------------------------------ MENU ----------------------------------------------------------------------------
+def menu():
+    print("Espere para validación de credenciales de Administrador. En caso de ser empleado, ingrese: Empleado.")
+    time.sleep(2)
+    codigo = input("Ingrese su código de Administrador: ")
+
+    codigosDeAdmin = ["admin", "TC1028"]
+
+    if codigo in codigosDeAdmin:
+        print("--- MENU DE ADMIN ---")
+        print("[ 1 ] Registrar ventas")
+        print("[ 2 ] Administración de Inventario.")
+        print("[ 3 ] Consultar datos de las ventas")
+        print("[ 4 ] Mostrar reportes de ventas por vendedor o por artículo")
+
+        opcionAEjecutar = int(input("Ingrese su selección:"))
+
+    else:
+        print("--- MENU DE EMPLEADO ---")
+        print("[ 1 ] Registrar ventas")
+        print("[ 2 ] Administración de Inventario.")
+
+        opcionAEjecutar = int(input("Ingrese su selección:"))
+
+    return opcionAEjecutar
+#------------------------------------------------------------------------------------------ MENU ----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------- EJECUCIÓN DEL MENU ---------------------------------------------------------------------
 def seleccionMenu():
     opcionAEjecutar = menu()
 
@@ -144,13 +164,14 @@ def seleccionMenu():
             print("--- ADMINISTRACIÓN DE INVENTARIO ---")
         else:
             print("Error empleado")
-#------------------------------------- EJECUCIÓN DEL MENU -------------------------------------------
+#----------------------------------------------------------------------------------- EJECUCIÓN DEL MENU ---------------------------------------------------------------------
 
-
+#------------------------------------------------------------------------------------------ MAIN -----------------------------------------------------------------------------
 if __name__ == '__main__':
     verificacionContrasenia()
     codigosDeAdmin = ["admin", "TC1028"]
     seleccionMenu()
+#------------------------------------------------------------------------------------------ MAIN -----------------------------------------------------------------------------
 
 
 
