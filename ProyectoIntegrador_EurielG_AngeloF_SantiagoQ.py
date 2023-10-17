@@ -49,6 +49,7 @@ def verificacionContrasenia():
     time.sleep(bloqueoSegundos)
     return intentosMaximos
 #--------------------------------------------------------------------------------------- LOG IN -----------------------------------------------------------------------------
+
 #---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
 
 
@@ -87,7 +88,7 @@ def gestorDeInventario():
         elif opcion == "2":
             print("Inventario:")
             for item in inventario:
-                print(f"Contador: {item[0]}, Artículo: {item[1]}, SKU: {item[2]}, Cantidad: {item[3]}")
+                print(f"#: {item[0]}, Artículo: {item[1]}, SKU: {item[2]}, Cantidad: {item[3]}")
         elif opcion == "3":
             guardarInventario("Inventario.txt", inventario)
             print("Inventario guardado en 'Inventario.txt'. ¡Adiós!")
