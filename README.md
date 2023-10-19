@@ -1,5 +1,7 @@
 # Proyecto de Inventario y Registro de Ventas para Electrónica
-
+Euriel Gomez Tamez - A00838859
+Santiago Quintana Moreno - 
+Angelo Franco Baez . 
 ## Descripción del Proyecto
 
 
