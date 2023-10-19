@@ -58,8 +58,7 @@ else:
 #--------------------------------------------------------------------------------------- LOG IN -----------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
-# Función para registrar una venta
-def registrar_venta():
+def registrarVenta():
     nombre_vendedor = input("Ingrese el nombre del vendedor: ")
     nombre_articulo = input("Ingrese el nombre del artículo: ")
     sku = input("Ingrese el SKU: ")
@@ -67,21 +66,13 @@ def registrar_venta():
     fecha = input("Ingrese la fecha de la venta (YYYY-MM-DD): ")
     precio_por_unidad = float(input("Ingrese el precio por unidad: "))
     
-    venta = f"{nombre_vendedor}, {nombre_articulo}, {sku}, {cantidad}, {fecha}, {precio_por_unidad}"
+    venta = [nombre_vendedor, nombre_articulo, sku, cantidad, fecha, precio_por_unidad]
     
     with open("registro_ventas.txt", "a") as archivo_ventas:
-        archivo_ventas.write(venta + "\n")
-
-while True:
-    opcion = input("¿Desea registrar una venta? (Sí/No): ").strip().lower()
-    if opcion == "si":
-        registrar_venta()
-    elif opcion == "no":
-        break
-    else:
-        print("Opción no válida. Por favor, responda 'Sí' o 'No'.")
-
-print("Ventas registradas exitosamente")
+        archivo_ventas.write(f"{'Vendedor'.ljust(15)}{'Artículo'.center(30)}{'SKU'.center(15)}{'Cantidad'.rjust(10)}{'Fecha'.center(15)}{'Precio por Unidad'.rjust(15)}\n")
+        archivo_ventas.write(f"{venta[0].ljust(15)}{venta[1].center(30)}{venta[2].center(15)}{str(venta[3]).rjust(10)}{venta[4].center(15)}{str(venta[5]).rjust(15)}\n")
+    
+    print("Venta registrada exitosamente")
 #---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------- GESTOR DE INVENTARIO --------------------------------------------------------------------
@@ -90,8 +81,10 @@ def agregarArticulo(inventario, contador, articulo, sku, cantidad):
 
 def guardarInventario(nombre_archivo, inventario):
     with open(nombre_archivo, 'w') as archivo:
+        archivo.write("Inventario:\n")
+        archivo.write(f"{'#'.ljust(10)}{'Artículo'.center(30)}{'SKU'.center(15)}{'Cantidad'.rjust(20)}\n")
         for item in inventario:
-            archivo.write(f"{item[0]}\t{item[1]}\t{item[2]}\t{item[3]}\n")
+            archivo.write(f"{str(item[0]).ljust(10)}{item[1].center(30)}{item[2].center(15)}{str(item[3]).rjust(20)}\n")
 
 def gestorDeInventario():
     inventario = []  
@@ -113,8 +106,9 @@ def gestorDeInventario():
             contador += 1
         elif opcion == "2":
             print("Inventario:")
+            print(f"{'#'.ljust(10)}{'Artículo'.center(30)}{'SKU'.center(15)}{'Cantidad'.rjust(20)}")
             for item in inventario:
-                print(f"#: {item[0]}, Artículo: {item[1]}, SKU: {item[2]}, Cantidad: {item[3]}")
+                print(f"{str(item[0]).ljust(10)}{item[1].center(30)}{item[2].center(15)}{str(item[3]).rjust(20)}")
         elif opcion == "3":
             guardarInventario("Inventario.txt", inventario)
             print("Inventario guardado en 'Inventario.txt'. ¡Adiós!")
@@ -181,6 +175,7 @@ def seleccionMenu():
     if "admin" or "TC1028" in codigosDeAdmin:
         if opcionAEjecutar == 1:
             print("--- REGISTRO DE VENTAS ---")
+            registrarVenta()
 
 
         elif opcionAEjecutar == 2:
