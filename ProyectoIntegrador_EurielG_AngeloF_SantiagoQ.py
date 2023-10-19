@@ -58,11 +58,30 @@ else:
 #--------------------------------------------------------------------------------------- LOG IN -----------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
+# Función para registrar una venta
+def registrar_venta():
+    nombre_vendedor = input("Ingrese el nombre del vendedor: ")
+    nombre_articulo = input("Ingrese el nombre del artículo: ")
+    sku = input("Ingrese el SKU: ")
+    cantidad = int(input("Ingrese la cantidad de artículos: "))
+    fecha = input("Ingrese la fecha de la venta (YYYY-MM-DD): ")
+    precio_por_unidad = float(input("Ingrese el precio por unidad: "))
+    
+    venta = f"{nombre_vendedor}, {nombre_articulo}, {sku}, {cantidad}, {fecha}, {precio_por_unidad}"
+    
+    with open("registro_ventas.txt", "a") as archivo_ventas:
+        archivo_ventas.write(venta + "\n")
 
+while True:
+    opcion = input("¿Desea registrar una venta? (Sí/No): ").strip().lower()
+    if opcion == "si":
+        registrar_venta()
+    elif opcion == "no":
+        break
+    else:
+        print("Opción no válida. Por favor, responda 'Sí' o 'No'.")
 
-
-
-
+print("Ventas registradas exitosamente")
 #---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------- GESTOR DE INVENTARIO --------------------------------------------------------------------
