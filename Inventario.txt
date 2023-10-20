@@ -1,5 +1,0 @@
-Inventario:
-#                    Artículo                 SKU                  Cantidad
-1                     Mauro                  123123                       1
-2                      Eric                  13123                        1
-3                    RobotFTC                13133                        1
