@@ -1,0 +1,3 @@
+Inventario:
+#                    Artículo                 SKU                  Cantidad
+1                      qewq                  123123                     122

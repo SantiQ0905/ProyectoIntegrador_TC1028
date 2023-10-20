@@ -15,7 +15,6 @@
 
 
 import time
-import sys
 
 logo = """
  _       _____    ____  ___________
@@ -173,35 +172,41 @@ def menu():
 
 #----------------------------------------------------------------------------------- EJECUCIÓN DEL MENU ---------------------------------------------------------------------
 def seleccionMenu():
-    opcionAEjecutar = menu()
+    while True:
+        opcionAEjecutar = menu()
 
-    if "admin" or "TC1028" in codigosDeAdmin:
-        if opcionAEjecutar == 1:
-            print("--- REGISTRO DE VENTAS ---")
-            registrarVenta()
+        if "admin" or "TC1028" in codigosDeAdmin:
+            if opcionAEjecutar == 1:
+                print("--- REGISTRO DE VENTAS ---")
+                registrarVenta()
 
-        elif opcionAEjecutar == 2:
-            print("--- GESTOR DE INVENTARIO ---")
-            gestorDeInventario()
+            elif opcionAEjecutar == 2:
+                print("--- GESTOR DE INVENTARIO ---")
+                gestorDeInventario()
 
-        elif opcionAEjecutar == 3:
-            print("--- DATOS DE VENTAS ---")
-            mostrarVentas()
+            elif opcionAEjecutar == 3:
+                print("--- DATOS DE VENTAS ---")
+                mostrarVentas()
 
-        elif opcionAEjecutar == 4:
-            print("--- REPORTE DE VENTAS POR VENDEDOR ---")
-            crearReporte()
+            elif opcionAEjecutar == 4:
+                print("--- REPORTE DE VENTAS POR VENDEDOR ---")
+                crearReporte()
+
+            else:
+                print("Ha ocurrido un error. Intente de nuevo.")
 
         else:
-            print("Ha ocurrido un error. Intente de nuevo.")
+            if opcionAEjecutar == 1:
+                print("--- REGISTRO DE VENTAS ---")
+            elif opcionAEjecutar == 2:
+                print("--- ADMINISTRACIÓN DE INVENTARIO ---")
+            else:
+                print("Ha ocurrido un error. Intente de nuevo.")
 
-    else:
-        if opcionAEjecutar == 1:
-            print("--- REGISTRO DE VENTAS ---")
-        elif opcionAEjecutar == 2:
-            print("--- ADMINISTRACIÓN DE INVENTARIO ---")
-        else:
-            print("Ha ocurrido un error. Intente de nuevo.")
+        seguir = input("¿Desea realizar otra acción? (s/n): ")
+        if seguir.lower() != 's':
+            break
+
 #----------------------------------------------------------------------------------- EJECUCIÓN DEL MENU ---------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------------ MAIN -----------------------------------------------------------------------------
