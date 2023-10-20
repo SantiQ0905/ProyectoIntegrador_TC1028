@@ -1,0 +1,4 @@
+Vendedor                  Artículo                 SKU        Cantidad     Fecha     Precio por Unidad
+Santi                       CPU                   31231              5   2023-05-09            500.0
+Vendedor                  Artículo                 SKU        Cantidad     Fecha     Precio por Unidad
+Santi                      Mauro                  132131             1   2023-10-19           1000.0

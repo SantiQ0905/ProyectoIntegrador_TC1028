@@ -118,11 +118,14 @@ def gestorDeInventario():
 #---------------------------------------------------------------------------------- GESTOR DE INVENTARIO --------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------ DATOS DE VENTAS -----------------------------------------------------------------------
-
-
-
-
-
+def mostrarVentas():
+    with open("registro_ventas.txt", "r") as archivo_ventas:
+        header = archivo_ventas.readline()  
+        print(header.strip()) 
+        
+        for linea in archivo_ventas:
+            datos = linea.strip().split(',')
+            print(f"{datos[0].ljust(15)}{datos[1].center(30)}{datos[2].center(15)}{datos[3].rjust(10)}{datos[4].center(15)}{datos[5].rjust(15)}")
 #------------------------------------------------------------------------------------ DATOS DE VENTAS -----------------------------------------------------------------------
 
 #------------------------------------------------------------------------------ REPORTE DE VENTAS POR EMPLEADO --------------------------------------------------------------
@@ -131,7 +134,6 @@ def crearReporte():
     fecha = input("Ingresa la fecha del reporte: ")
     articulo = input("Ingresa el artículo: ")
 
-    # Crear el archivo Reporte.txt y escribir los valores en él
     with open("Reporte.txt", "w") as archivo:
         archivo.write(f"Información del Reporte:\n")
         archivo.write(f"Nombre del vendedor: {nombre_vendedor}\n")
@@ -177,14 +179,13 @@ def seleccionMenu():
             print("--- REGISTRO DE VENTAS ---")
             registrarVenta()
 
-
         elif opcionAEjecutar == 2:
             print("--- GESTOR DE INVENTARIO ---")
             gestorDeInventario()
 
         elif opcionAEjecutar == 3:
             print("--- DATOS DE VENTAS ---")
-
+            mostrarVentas()
 
         elif opcionAEjecutar == 4:
             print("--- REPORTE DE VENTAS POR VENDEDOR ---")
