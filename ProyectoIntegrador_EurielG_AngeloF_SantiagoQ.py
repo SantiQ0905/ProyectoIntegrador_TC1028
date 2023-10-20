@@ -37,24 +37,22 @@ def verificacionContrasenia():
 
     bloqueoSegundos = 5
     intentosMaximos = 3
-    for intento in range(1, intentosMaximos + 1):
-        usuarioIngresado = input(f"Ingrese su Usuario: ")
-        contraseniaIngresada = input(f"Ingrese su Contraseña: ")
+    intento = 1
+
+    while intento <= intentosMaximos:
+        usuarioIngresado = input("Ingrese su Usuario: ")
+        contraseniaIngresada = input("Ingrese su Contraseña: ")
+
         if usuarioIngresado in usuariosPermitidos and contraseniaIngresada in contraseniasPermitidas:
             print("Login Correcto")
             return intento
 
         print(f"Usuario o contraseña equivocado. Intente de nuevo. Intentos restantes: {intentosMaximos - intento}.")
+        intento += 1
 
     print("Bloqueando el sistema.")
     time.sleep(bloqueoSegundos)
     return None
-
-result = verificacionContrasenia()
-if result is not None:
-    print("Sesión exitosa")
-else:
-    print("El programa se ha bloqueado.")
 #--------------------------------------------------------------------------------------- LOG IN -----------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------- REGISTRO DE VENTAS ----------------------------------------------------------------------
@@ -195,7 +193,7 @@ def seleccionMenu():
             crearReporte()
 
         else:
-            print("Error admin")
+            print("Ha ocurrido un error. Intente de nuevo.")
 
     else:
         if opcionAEjecutar == 1:
@@ -203,7 +201,7 @@ def seleccionMenu():
         elif opcionAEjecutar == 2:
             print("--- ADMINISTRACIÓN DE INVENTARIO ---")
         else:
-            print("Error empleado")
+            print("Ha ocurrido un error. Intente de nuevo.")
 #----------------------------------------------------------------------------------- EJECUCIÓN DEL MENU ---------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------------ MAIN -----------------------------------------------------------------------------
