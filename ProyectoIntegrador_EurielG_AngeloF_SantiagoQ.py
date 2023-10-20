@@ -125,7 +125,10 @@ def mostrarVentas():
         
         for linea in archivo_ventas:
             datos = linea.strip().split(',')
-            print(f"{datos[0].ljust(15)}{datos[1].center(30)}{datos[2].center(15)}{datos[3].rjust(10)}{datos[4].center(15)}{datos[5].rjust(15)}")
+            if len(datos) >= 6:
+                print(f"{datos[0].ljust(15)}{datos[1].center(30)}{datos[2].center(15)}{datos[3].rjust(10)}{datos[4].center(15)}{datos[5].rjust(15)}")
+            else:
+                print("Línea de datos incompleta:", linea)
 #------------------------------------------------------------------------------------ DATOS DE VENTAS -----------------------------------------------------------------------
 
 #------------------------------------------------------------------------------ REPORTE DE VENTAS POR EMPLEADO --------------------------------------------------------------
