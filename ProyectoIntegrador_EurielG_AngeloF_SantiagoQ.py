@@ -88,10 +88,10 @@ def gestorDeInventario():
     contador = 1
 
     while True:
-        print("Opciones:")
-        print("1. Agregar artículo al inventario")
-        print("2. Mostrar inventario")
-        print("3. Salir")
+        print("--- OPCIONES DE INVENTARIO: ---")
+        print("[ 1 ] Agregar artículo al inventario")
+        print("[ 2 ] Mostrar inventario")
+        print("[ 3 ] Salir")
 
         opcion = input("Seleccione una opción: ")
 
